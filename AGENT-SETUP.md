@@ -1,0 +1,11 @@
+# Agent boundary and local adapter
+
+agent.mjs remains provider-independent. local-model.mjs is the explicitly configured adapter for local Qwen3-1.7B through llama.cpp b11552. The app sends anonymous structured timing input only to 127.0.0.1:8790; no external model endpoint or API key is used.
+
+The trusted adapter receives instructions, goal (check/options), a cloned schedule, public tools, verified history and an AbortSignal. It returns either {type:"finish"} or {type:"tool_call",name,arguments}. The runtime verifies exact canonical input and result equality. Analysis is required before proposals; each tool runs once. The model receives compact result summaries; complete drafts remain in the verified report. Only next permitted actions appear in the response schema, but application-side validation remains mandatory. The adapter uses b11552's nested response_format.json_schema.schema field; its README example does not accurately describe that parser shape.
+
+Goal check forbids proposal selection; goal options permits it. The model may finish after analysis; proposals:null means alternatives were not explored. Completed does not mean conflict-free. A stopped run can contain verified partial facts; the UI refuses to label it completed. The small model cannot decide calendar changes, execute a URL/command, generate displayed advice or modify input arguments. Tool names shown in the UI come from validated calls.
+
+Web requests allow only same-origin local access, 8 KB bodies, one active inference and 12 attempts/minute. Client cancellation or disconnect propagates an AbortSignal to fetch. The agent permits up to four decisions at thirty seconds each in the web app; the browser request is cancelled after 125 seconds. Late replies after edits/cancellation are discarded. The model adapter's JavaScript is trusted, not sandboxed; it must not be replaced with unreviewed user code.
+
+Evidence: live-evidence.json contains three genuine local-model runs with fictional inputs plus a separate actual HTTP MCP client lifecycle. Model decisions were validated, not prerecorded. The direct local registry loop and MCP transport are distinct paths. agent-smoke-output.json is synthetic test evidence only. Browser rendering, official SDK/Alexa integration, remote hosting and a new video remain unverified. See README for startup, check commands and scope.

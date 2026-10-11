@@ -1,0 +1,24 @@
+Calm Evening — local contest materials, not submitted
+
+Project name: Calm Evening
+Elevator pitch: A calm daily planner that catches timing clashes, respects fixed commitments, and offers practical drafts you choose.
+
+Problem
+Schedules often omit the time needed between activities. A plan can therefore be impossible even when calendar blocks do not overlap. Moving a fixed commitment without permission makes the suggestion less useful.
+
+What it does
+The English/Polish interface accepts explicit times, transition needs, locked commitments and optional flexibility windows. It identifies clashes, proposes constrained drafts when possible, and leaves the choice to the person. These drafts change the local form only.
+
+How it works
+JavaScript constraint calculations and a small local Qwen3 model served through llama.cpp. The model chooses bounded read-only workflow actions; verified tool calculations determine every displayed time. The tool registry is also available through a local MCP 2025-11-25 Streamable HTTP endpoint. The application does not persist schedules or send them to an external AI service.
+
+Verification
+25 automated checks passed together across constraints, protocol, bounded loop, adapter and simulated UI. Three genuine model/HTTP cases and a generic HTTP MCP lifecycle passed. Desktop background launch/readiness/page delivery/graceful stop passed. A separate real Chrome walkthrough verified the fixed conflict, actual AI proposing an explicitly permitted 18:50–19:20 routine, and the person choosing that draft in the local form. Official MCP SDK, Alexa, mobile layout and public app deployment remain unverified.
+
+Challenges and limits
+A narrow local model needed correctly constrained API responses and explicit permitted-action validation. All tool arguments are bound to the input, and model prose is not treated as timing evidence. Current UI: two activities, same day, one-task alternative search. No Alexa connection, natural-language conversation, calendar writing, public endpoint or new demo video.
+
+Build tags: javascript, node.js, html, css, mcp, qwen, llama.cpp
+Code was developed with an AI coding assistant and reviewed through documented checks. This draft makes no claim that the participant wrote every line independently.
+
+Destination considered: Amazon Alexa+ track, subject to final rule/reviewer check. Do not present local HTTP evidence as Alexa certification. Public source repository: https://github.com/jacman1988-super/calm-evening. No contest registration, submission or public AI hosting has been performed.

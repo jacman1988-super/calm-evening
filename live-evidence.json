@@ -1,0 +1,505 @@
+{
+  "verifiedAtUtc": "2026-10-11T09:00:21.282Z",
+  "evidenceType": "actual local Qwen3-1.7B Q8_0 inference through llama.cpp b11552 and HTTP; fictional inputs",
+  "modelLive": true,
+  "httpVerified": true,
+  "mcpRpcClientVerified": true,
+  "alexaConnected": false,
+  "browserVerified": false,
+  "cases": [
+    {
+      "name": "fixed",
+      "result": {
+        "status": "complete",
+        "code": "finished",
+        "turns": 3,
+        "source": "local model choices and verified constraint calculations",
+        "originalSchedule": {
+          "tasks": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "18:30",
+              "end": "19:00",
+              "transitionMinutes": 0,
+              "locked": true
+            }
+          ]
+        },
+        "analysis": {
+          "status": "conflict",
+          "conflicts": [
+            {
+              "from": "lesson",
+              "to": "routine",
+              "kind": "transition_shortfall",
+              "shortfallMinutes": 20,
+              "bothLocked": true
+            }
+          ],
+          "schedule": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "18:30",
+              "end": "19:00",
+              "transitionMinutes": 0,
+              "locked": true
+            }
+          ],
+          "source": "deterministic constraint calculation",
+          "limitations": [
+            "Same-day times only; no real travel or calendar availability lookup."
+          ]
+        },
+        "proposals": {
+          "status": "needs_coordination",
+          "options": [],
+          "conflicts": [
+            {
+              "from": "lesson",
+              "to": "routine",
+              "kind": "transition_shortfall",
+              "shortfallMinutes": 20,
+              "bothLocked": true
+            }
+          ],
+          "externalActionsPerformed": false,
+          "explanation": "No single-task move inside the stated windows resolves all conflicts. Ask about an alternative appointment or help; neither is assumed available.",
+          "limitations": [
+            "Search changes one movable task at a time, within its explicitly supplied window.",
+            "No messages, bookings or calendar updates are performed."
+          ]
+        },
+        "toolCalls": [
+          {
+            "name": "analyze_evening",
+            "result": {
+              "status": "conflict",
+              "conflicts": [
+                {
+                  "from": "lesson",
+                  "to": "routine",
+                  "kind": "transition_shortfall",
+                  "shortfallMinutes": 20,
+                  "bothLocked": true
+                }
+              ],
+              "schedule": [
+                {
+                  "id": "lesson",
+                  "start": "17:30",
+                  "end": "18:30",
+                  "transitionMinutes": 20,
+                  "locked": true
+                },
+                {
+                  "id": "routine",
+                  "start": "18:30",
+                  "end": "19:00",
+                  "transitionMinutes": 0,
+                  "locked": true
+                }
+              ],
+              "source": "deterministic constraint calculation",
+              "limitations": [
+                "Same-day times only; no real travel or calendar availability lookup."
+              ]
+            }
+          },
+          {
+            "name": "propose_evening_options",
+            "result": {
+              "status": "needs_coordination",
+              "options": [],
+              "conflicts": [
+                {
+                  "from": "lesson",
+                  "to": "routine",
+                  "kind": "transition_shortfall",
+                  "shortfallMinutes": 20,
+                  "bothLocked": true
+                }
+              ],
+              "externalActionsPerformed": false,
+              "explanation": "No single-task move inside the stated windows resolves all conflicts. Ask about an alternative appointment or help; neither is assumed available.",
+              "limitations": [
+                "Search changes one movable task at a time, within its explicitly supplied window.",
+                "No messages, bookings or calendar updates are performed."
+              ]
+            }
+          }
+        ],
+        "requiresUserChoice": false,
+        "externalActionsPerformed": false,
+        "notice": "Only verified calculations are shown. No calendar, messages or bookings were changed. Model prose is not displayed.",
+        "modelDecisions": [
+          {
+            "action": "analyze_evening",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 2196
+          },
+          {
+            "action": "propose_evening_options",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1362
+          },
+          {
+            "action": "finish",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 933
+          }
+        ],
+        "modelProvider": "llama.cpp local; no Alexa connection"
+      }
+    },
+    {
+      "name": "flexible",
+      "result": {
+        "status": "complete",
+        "code": "finished",
+        "turns": 3,
+        "source": "local model choices and verified constraint calculations",
+        "originalSchedule": {
+          "tasks": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "18:30",
+              "end": "19:00",
+              "transitionMinutes": 0,
+              "locked": false,
+              "windowStart": "18:30",
+              "windowEnd": "19:30"
+            }
+          ]
+        },
+        "analysis": {
+          "status": "conflict",
+          "conflicts": [
+            {
+              "from": "lesson",
+              "to": "routine",
+              "kind": "transition_shortfall",
+              "shortfallMinutes": 20,
+              "bothLocked": false
+            }
+          ],
+          "schedule": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "18:30",
+              "end": "19:00",
+              "transitionMinutes": 0,
+              "locked": false,
+              "windowStart": "18:30",
+              "windowEnd": "19:30"
+            }
+          ],
+          "source": "deterministic constraint calculation",
+          "limitations": [
+            "Same-day times only; no real travel or calendar availability lookup."
+          ]
+        },
+        "proposals": {
+          "status": "options_ready",
+          "options": [
+            {
+              "changedTask": "routine",
+              "shiftMinutes": 20,
+              "schedule": [
+                {
+                  "id": "lesson",
+                  "start": "17:30",
+                  "end": "18:30",
+                  "transitionMinutes": 20,
+                  "locked": true
+                },
+                {
+                  "id": "routine",
+                  "start": "18:50",
+                  "end": "19:20",
+                  "transitionMinutes": 0,
+                  "locked": false,
+                  "windowStart": "18:30",
+                  "windowEnd": "19:30"
+                }
+              ],
+              "requiresUserChoice": true
+            }
+          ],
+          "conflicts": [
+            {
+              "from": "lesson",
+              "to": "routine",
+              "kind": "transition_shortfall",
+              "shortfallMinutes": 20,
+              "bothLocked": false
+            }
+          ],
+          "externalActionsPerformed": false,
+          "explanation": "These are drafts. Locked tasks and durations are preserved. No calendar has been changed.",
+          "limitations": [
+            "Search changes one movable task at a time, within its explicitly supplied window.",
+            "No messages, bookings or calendar updates are performed."
+          ]
+        },
+        "toolCalls": [
+          {
+            "name": "analyze_evening",
+            "result": {
+              "status": "conflict",
+              "conflicts": [
+                {
+                  "from": "lesson",
+                  "to": "routine",
+                  "kind": "transition_shortfall",
+                  "shortfallMinutes": 20,
+                  "bothLocked": false
+                }
+              ],
+              "schedule": [
+                {
+                  "id": "lesson",
+                  "start": "17:30",
+                  "end": "18:30",
+                  "transitionMinutes": 20,
+                  "locked": true
+                },
+                {
+                  "id": "routine",
+                  "start": "18:30",
+                  "end": "19:00",
+                  "transitionMinutes": 0,
+                  "locked": false,
+                  "windowStart": "18:30",
+                  "windowEnd": "19:30"
+                }
+              ],
+              "source": "deterministic constraint calculation",
+              "limitations": [
+                "Same-day times only; no real travel or calendar availability lookup."
+              ]
+            }
+          },
+          {
+            "name": "propose_evening_options",
+            "result": {
+              "status": "options_ready",
+              "options": [
+                {
+                  "changedTask": "routine",
+                  "shiftMinutes": 20,
+                  "schedule": [
+                    {
+                      "id": "lesson",
+                      "start": "17:30",
+                      "end": "18:30",
+                      "transitionMinutes": 20,
+                      "locked": true
+                    },
+                    {
+                      "id": "routine",
+                      "start": "18:50",
+                      "end": "19:20",
+                      "transitionMinutes": 0,
+                      "locked": false,
+                      "windowStart": "18:30",
+                      "windowEnd": "19:30"
+                    }
+                  ],
+                  "requiresUserChoice": true
+                }
+              ],
+              "conflicts": [
+                {
+                  "from": "lesson",
+                  "to": "routine",
+                  "kind": "transition_shortfall",
+                  "shortfallMinutes": 20,
+                  "bothLocked": false
+                }
+              ],
+              "externalActionsPerformed": false,
+              "explanation": "These are drafts. Locked tasks and durations are preserved. No calendar has been changed.",
+              "limitations": [
+                "Search changes one movable task at a time, within its explicitly supplied window.",
+                "No messages, bookings or calendar updates are performed."
+              ]
+            }
+          }
+        ],
+        "requiresUserChoice": true,
+        "externalActionsPerformed": false,
+        "notice": "Only verified calculations are shown. No calendar, messages or bookings were changed. Model prose is not displayed.",
+        "modelDecisions": [
+          {
+            "action": "analyze_evening",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1125
+          },
+          {
+            "action": "propose_evening_options",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1406
+          },
+          {
+            "action": "finish",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1230
+          }
+        ],
+        "modelProvider": "llama.cpp local; no Alexa connection"
+      }
+    },
+    {
+      "name": "clear",
+      "result": {
+        "status": "complete",
+        "code": "finished",
+        "turns": 3,
+        "source": "local model choices and verified constraint calculations",
+        "originalSchedule": {
+          "tasks": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "19:00",
+              "end": "19:30",
+              "transitionMinutes": 0,
+              "locked": true
+            }
+          ]
+        },
+        "analysis": {
+          "status": "clear",
+          "conflicts": [],
+          "schedule": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "19:00",
+              "end": "19:30",
+              "transitionMinutes": 0,
+              "locked": true
+            }
+          ],
+          "source": "deterministic constraint calculation",
+          "limitations": [
+            "Same-day times only; no real travel or calendar availability lookup."
+          ]
+        },
+        "proposals": {
+          "status": "already_clear",
+          "options": [],
+          "conflicts": [],
+          "externalActionsPerformed": false
+        },
+        "toolCalls": [
+          {
+            "name": "analyze_evening",
+            "result": {
+              "status": "clear",
+              "conflicts": [],
+              "schedule": [
+                {
+                  "id": "lesson",
+                  "start": "17:30",
+                  "end": "18:30",
+                  "transitionMinutes": 20,
+                  "locked": true
+                },
+                {
+                  "id": "routine",
+                  "start": "19:00",
+                  "end": "19:30",
+                  "transitionMinutes": 0,
+                  "locked": true
+                }
+              ],
+              "source": "deterministic constraint calculation",
+              "limitations": [
+                "Same-day times only; no real travel or calendar availability lookup."
+              ]
+            }
+          },
+          {
+            "name": "propose_evening_options",
+            "result": {
+              "status": "already_clear",
+              "options": [],
+              "conflicts": [],
+              "externalActionsPerformed": false
+            }
+          }
+        ],
+        "requiresUserChoice": false,
+        "externalActionsPerformed": false,
+        "notice": "Only verified calculations are shown. No calendar, messages or bookings were changed. Model prose is not displayed.",
+        "modelDecisions": [
+          {
+            "action": "analyze_evening",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1285
+          },
+          {
+            "action": "propose_evening_options",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1617
+          },
+          {
+            "action": "finish",
+            "provider": "llama.cpp on this computer",
+            "elapsedMs": 1009
+          }
+        ],
+        "modelProvider": "llama.cpp local; no Alexa connection"
+      }
+    }
+  ],
+  "mcp": {
+    "protocolVersion": "2025-11-25",
+    "initialized": true,
+    "discovery": true,
+    "calculation": true,
+    "sessionClosed": true,
+    "officialSdkClient": false
+  }
+}

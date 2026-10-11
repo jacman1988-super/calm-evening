@@ -1,0 +1,173 @@
+{
+  "notice": "Fictional local tool execution, not an Alexa or LLM interaction.",
+  "fixedExample": {
+    "input": {
+      "tasks": [
+        {
+          "id": "lesson",
+          "start": "17:30",
+          "end": "18:30",
+          "transitionMinutes": 20,
+          "locked": true
+        },
+        {
+          "id": "routine",
+          "start": "18:30",
+          "end": "19:00",
+          "transitionMinutes": 0,
+          "locked": true
+        }
+      ]
+    },
+    "analysis": {
+      "status": "conflict",
+      "conflicts": [
+        {
+          "from": "lesson",
+          "to": "routine",
+          "kind": "transition_shortfall",
+          "shortfallMinutes": 20,
+          "bothLocked": true
+        }
+      ],
+      "schedule": [
+        {
+          "id": "lesson",
+          "start": "17:30",
+          "end": "18:30",
+          "transitionMinutes": 20,
+          "locked": true
+        },
+        {
+          "id": "routine",
+          "start": "18:30",
+          "end": "19:00",
+          "transitionMinutes": 0,
+          "locked": true
+        }
+      ],
+      "source": "deterministic constraint calculation",
+      "limitations": [
+        "Same-day times only; no real travel or calendar availability lookup."
+      ]
+    },
+    "options": {
+      "status": "needs_coordination",
+      "options": [],
+      "conflicts": [
+        {
+          "from": "lesson",
+          "to": "routine",
+          "kind": "transition_shortfall",
+          "shortfallMinutes": 20,
+          "bothLocked": true
+        }
+      ],
+      "externalActionsPerformed": false,
+      "explanation": "No single-task move inside the stated windows resolves all conflicts. Ask about an alternative appointment or help; neither is assumed available.",
+      "limitations": [
+        "Search changes one movable task at a time, within its explicitly supplied window.",
+        "No messages, bookings or calendar updates are performed."
+      ]
+    }
+  },
+  "flexibleExample": {
+    "input": {
+      "tasks": [
+        {
+          "id": "lesson",
+          "start": "17:30",
+          "end": "18:30",
+          "transitionMinutes": 20,
+          "locked": true
+        },
+        {
+          "id": "routine",
+          "start": "18:30",
+          "end": "19:00",
+          "transitionMinutes": 0,
+          "locked": false,
+          "windowStart": "18:30",
+          "windowEnd": "19:30"
+        }
+      ]
+    },
+    "analysis": {
+      "status": "conflict",
+      "conflicts": [
+        {
+          "from": "lesson",
+          "to": "routine",
+          "kind": "transition_shortfall",
+          "shortfallMinutes": 20,
+          "bothLocked": false
+        }
+      ],
+      "schedule": [
+        {
+          "id": "lesson",
+          "start": "17:30",
+          "end": "18:30",
+          "transitionMinutes": 20,
+          "locked": true
+        },
+        {
+          "id": "routine",
+          "start": "18:30",
+          "end": "19:00",
+          "transitionMinutes": 0,
+          "locked": false,
+          "windowStart": "18:30",
+          "windowEnd": "19:30"
+        }
+      ],
+      "source": "deterministic constraint calculation",
+      "limitations": [
+        "Same-day times only; no real travel or calendar availability lookup."
+      ]
+    },
+    "options": {
+      "status": "options_ready",
+      "options": [
+        {
+          "changedTask": "routine",
+          "shiftMinutes": 20,
+          "schedule": [
+            {
+              "id": "lesson",
+              "start": "17:30",
+              "end": "18:30",
+              "transitionMinutes": 20,
+              "locked": true
+            },
+            {
+              "id": "routine",
+              "start": "18:50",
+              "end": "19:20",
+              "transitionMinutes": 0,
+              "locked": false,
+              "windowStart": "18:30",
+              "windowEnd": "19:30"
+            }
+          ],
+          "requiresUserChoice": true
+        }
+      ],
+      "conflicts": [
+        {
+          "from": "lesson",
+          "to": "routine",
+          "kind": "transition_shortfall",
+          "shortfallMinutes": 20,
+          "bothLocked": false
+        }
+      ],
+      "externalActionsPerformed": false,
+      "explanation": "These are drafts. Locked tasks and durations are preserved. No calendar has been changed.",
+      "limitations": [
+        "Search changes one movable task at a time, within its explicitly supplied window.",
+        "No messages, bookings or calendar updates are performed."
+      ]
+    }
+  }
+}

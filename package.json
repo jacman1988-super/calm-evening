@@ -1,0 +1,20 @@
+{
+  "name": "calm-evening-mcp",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test *.test.mjs",
+    "demo": "node demo.mjs",
+    "build:preview": "node build-preview.mjs",
+    "check:agent": "node agent-smoke.mjs",
+    "start:ai": "node start-local.mjs",
+    "check:live": "node live-check.mjs",
+    "check:desktop": "node desktop-check.mjs"
+  }
+}

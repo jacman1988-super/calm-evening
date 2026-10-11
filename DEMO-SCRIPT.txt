@@ -1,0 +1,21 @@
+Calm Evening — English walkthrough plan, about 2 minutes
+A script for a future recording. No new video has been recorded.
+
+0:00–0:15
+"A calendar can look manageable while transition time makes the evening impossible. Calm Evening checks those gaps and keeps fixed commitments visible."
+Show the fictional session 17:30–18:30, 20-minute transition, and routine 18:30–19:00.
+
+0:15–0:45
+In the locally running app, choose Find possible adjustments and click Ask local AI. Show the real response and Tools chosen by local AI. Explain the 20-minute clash and that both fixed commitments mean coordination is needed. Do not say an appointment was moved.
+
+0:45–1:20
+Explicitly unlock the routine and allow the full activity within 18:30–19:30. Ask local AI again. Show the 18:50–19:20 draft and unchanged session. Choose the draft separately. State: "This changes the form only; it does not edit a calendar."
+
+1:20–1:45
+"The model chooses bounded workflow actions; verified tools calculate times. It runs locally with Qwen3 and llama.cpp, without sending the schedule to an external AI service. The interface supports English and Polish."
+Show source and live-evidence.json, optionally the genuine model check output. Synthetic smoke files are not model evidence.
+
+1:45–2:00
+"This is a local assistant prototype using the same read-only registry as its MCP endpoint. Generic HTTP/MCP calls are tested. It is not connected to Alexa and is not deployed publicly. It supports same-day planning and moving one activity at a time."
+
+Before recording: launch from Uruchom-Calm-Evening.cmd on the actual desktop; verify button results and visual layout. Codex browser timed out when accessing the server. Review the current contest requirements and final repository/video links before any submission.

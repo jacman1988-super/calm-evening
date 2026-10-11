@@ -1,0 +1,4 @@
+.local-ai/
+*.log
+*.pid
+node_modules/
